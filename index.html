@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,17 +12,36 @@
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
     </style>
 </head>
+
+<div class="form-container">
+    <form action="submit" class="creation-form">
+        <h1>Add new book</h1>
+        <input type="text" name="" id="title" placeholder="Title">
+        <input type="text" name="" id="author" placeholder="Author">
+        <input type="number" min="0" name="" id="pages" placeholder="Pages">
+        <div>
+            <label for=""><input type="checkbox" name="" id="isRead">Read</label>
+        </div>
+        <button id="submitBookButton">Submit</button>
+
+    </form>
+</div class="form-container">
+
 <body>
+
+    <button class="addBookButton">Add book</button>
     <div id="card-holder">
         <div class="card">
             <h1>Alice in wonderland</h1>
             <p>Lewis Carroll</p>
             <p>300 pages</p>
-            
+
             <label><input type="checkbox" name="isRead" id="isRead"> Read</label>
             <div><button>remove</button>
-    </div></div>
+            </div>
+        </div>
     </div>
-    
+
 </body>
+
 </html>
