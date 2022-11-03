@@ -5,33 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
     </style>
 </head>
+<div class="overlay invisible"></div>
+<form action="submit" class="creation-form invisible">
+    <h1>Add new book</h1>
+    <input type="text" name="" id="title" placeholder="Title">
+    <input type="text" name="" id="author" placeholder="Author">
+    <input type="number" min="0" name="" id="pages" placeholder="Pages">
+    <div>
+        <label for=""><input type="checkbox" name="" id="isRead">Read</label>
+    </div>
+    <button id="submitBookButton">Submit</button>
 
-<div class="form-container invisible">
-    <form action="submit" class="creation-form">
-        <h1>Add new book</h1>
-        <input type="text" name="" id="title" placeholder="Title">
-        <input type="text" name="" id="author" placeholder="Author">
-        <input type="number" min="0" name="" id="pages" placeholder="Pages">
-        <div>
-            <label for=""><input type="checkbox" name="" id="isRead">Read</label>
-        </div>
-        <button id="submitBookButton">Submit</button>
+</form>
 
-    </form>
-</div class="form-container">
 
 <body>
 
     <button class="addBookButton">Add book</button>
     <div id="card-holder">
-    
+
     </div>
 
 </body>

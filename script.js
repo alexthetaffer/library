@@ -2,7 +2,7 @@
 const cardHolder = document.getElementById('card-holder');
 const addBookButton = document.querySelector('.addBookButton');
 const creationForm = document.querySelector('.creation-form');
-const formContainer = document.querySelector('.form-container');
+const overlay = document.querySelector('.overlay');
 const submitBookButton = document.querySelector('#submitBookButton');
 
 const addBookForm = {
@@ -74,7 +74,8 @@ function clearLibrary() {
 }
 
 addBookButton.onclick = function () {
-    formContainer.classList.remove('invisible');
+    creationForm.classList.remove('invisible');
+    overlay.classList.remove('invisible');
 }
 
 submitBookButton.onclick = function (event) {
@@ -84,10 +85,14 @@ submitBookButton.onclick = function (event) {
     clearLibrary();
     displayLibrary();
     addBookForm.clearForm();
-    formContainer.classList.add('invisible');
-
+    creationForm.classList.add('invisible');
+    overlay.classList.add('invisible');
 
 }
 
-displayLibrary();
+overlay.addEventListener('click', () => {
+    overlay.classList.add('invisible');
+    creationForm.classList.add('invisible');
+})
 
+displayLibrary();

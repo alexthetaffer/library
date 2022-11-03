@@ -50,7 +50,7 @@ button {
     display: none;
 }
 
-.form-container {
+.overlay {
     position: fixed;
     background-color: rgba(0, 0, 0, 40%);
     height: 100vh;
