@@ -9,8 +9,14 @@ const addBookForm = {
     title: document.querySelector('#title'),
     author: document.querySelector('#author'),
     pages: document.querySelector('#pages'),
-    isRead: document.querySelector('#isRead')
+    isRead: document.querySelector('#isRead'),
 
+    clearForm: function () {
+        this.title.value = '';
+        this.author.value = '';
+        this.pages.value = '';
+        this.isRead.checked = false;
+    }
 }
 
 
@@ -61,6 +67,12 @@ function displayLibrary() {
     })
 }
 
+function clearLibrary() {
+    while (cardHolder.firstChild) {
+        cardHolder.removeChild(cardHolder.firstChild);
+    }
+}
+
 addBookButton.onclick = function () {
     formContainer.classList.remove('invisible');
 }
@@ -69,7 +81,10 @@ submitBookButton.onclick = function (event) {
     event.preventDefault();
 
     addBookToLibrary(addBookForm.title.value, addBookForm.author.value, addBookForm.pages.value, addBookForm.isRead.checked);
+    clearLibrary();
     displayLibrary();
+    addBookForm.clearForm();
+    formContainer.classList.add('invisible');
 
 
 }
