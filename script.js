@@ -5,6 +5,14 @@ const creationForm = document.querySelector('.creation-form');
 const formContainer = document.querySelector('.form-container');
 const submitBookButton = document.querySelector('#submitBookButton');
 
+const addBookForm = {
+    title: document.querySelector('#title'),
+    author: document.querySelector('#author'),
+    pages: document.querySelector('#pages'),
+    isRead: document.querySelector('#isRead')
+
+}
+
 
 const myLibrary = [];
 
@@ -59,15 +67,11 @@ addBookButton.onclick = function () {
 
 submitBookButton.onclick = function (event) {
     event.preventDefault();
-    const title = document.querySelector('#title');
-    const author = document.querySelector('#author');
-    const pages = document.querySelector('#pages');
-    const isRead = document.querySelector('#isRead');
 
-    addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
+    addBookToLibrary(addBookForm.title.value, addBookForm.author.value, addBookForm.pages.value, addBookForm.isRead.checked);
     displayLibrary();
 
-    
+
 }
 
 displayLibrary();
