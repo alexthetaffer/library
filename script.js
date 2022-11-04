@@ -4,6 +4,7 @@ const addBookButton = document.querySelector('.addBookButton');
 const creationForm = document.querySelector('.creation-form');
 const overlay = document.querySelector('.overlay');
 const submitBookButton = document.querySelector('#submitBookButton');
+let removeButtons = document.querySelectorAll('.remove-button');
 
 const addBookForm = {
     title: document.querySelector('#title'),
@@ -20,7 +21,7 @@ const addBookForm = {
 }
 
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -37,9 +38,12 @@ addBookToLibrary('The adventures of Tom Sawyer', 'Mark Twain', 300, true);
 addBookToLibrary('War and peace', 'Lev Tolstoy', 1000, false);
 
 function displayLibrary() {
+    i = 0;
     myLibrary.forEach(book => {
+
         const card = document.createElement('div');
         card.classList.add('card');
+        card.setAttribute('data', i);
 
         const title = document.createElement('h1');
         title.textContent = book.title;
@@ -63,7 +67,28 @@ function displayLibrary() {
         label.appendChild(isRead);
         card.appendChild(label);
 
+        const removeButton = document.createElement('button')
+        removeButton.classList.add('remove-button');
+        removeButton.textContent = 'Remove';
+        removeButton.setAttribute('data', i);
+        card.appendChild(removeButton);
+
         cardHolder.appendChild(card);
+
+        i++;
+    })
+
+    removeButtons = document.querySelectorAll('.remove-button');
+
+    removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonIndex = button.getAttribute('data');
+            console.log(buttonIndex);
+
+            myLibrary.splice(buttonIndex, 1);
+            clearLibrary();
+            displayLibrary();
+        })
     })
 }
 
@@ -94,5 +119,6 @@ overlay.addEventListener('click', () => {
     overlay.classList.add('invisible');
     creationForm.classList.add('invisible');
 })
+
 
 displayLibrary();
