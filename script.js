@@ -4,7 +4,6 @@ const addBookButton = document.querySelector('.addBookButton');
 const creationForm = document.querySelector('.creation-form');
 const overlay = document.querySelector('.overlay');
 const submitBookButton = document.querySelector('#submitBookButton');
-let removeButtons = document.querySelectorAll('.remove-button');
 
 const addBookForm = {
     title: document.querySelector('#title'),
@@ -20,14 +19,15 @@ const addBookForm = {
     }
 }
 
-
 let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
@@ -43,7 +43,6 @@ function displayLibrary() {
 
         const card = document.createElement('div');
         card.classList.add('card');
-        card.setAttribute('data', i);
 
         const title = document.createElement('h1');
         title.textContent = book.title;
@@ -98,11 +97,6 @@ function clearLibrary() {
     }
 }
 
-addBookButton.onclick = function () {
-    creationForm.classList.remove('invisible');
-    overlay.classList.remove('invisible');
-}
-
 submitBookButton.onclick = function (event) {
     event.preventDefault();
 
@@ -110,15 +104,19 @@ submitBookButton.onclick = function (event) {
     clearLibrary();
     displayLibrary();
     addBookForm.clearForm();
-    creationForm.classList.add('invisible');
-    overlay.classList.add('invisible');
-
+    closeCreationForm();
 }
 
-overlay.addEventListener('click', () => {
+function openCreationForm() {
+    creationForm.classList.remove('invisible');
+    overlay.classList.remove('invisible');
+}
+function closeCreationForm() {
     overlay.classList.add('invisible');
     creationForm.classList.add('invisible');
-})
+}
 
+overlay.onclick = closeCreationForm;
+addBookButton.onclick = openCreationForm;
 
 displayLibrary();
