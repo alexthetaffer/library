@@ -2,28 +2,94 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'montserrat', sans-serif;
 }
+
+:root {
+    --bgColor: #eee;
+}
+
+body {
+    background-color: var(--bgColor);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    box-shadow: 0px 2px 7px #bbb;
+    background-color: white;
+}
+
+header h1 {
+    font-weight: bold;
+
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+/* Buttons */
 
 button {
     margin-top: 10px;
-    padding: 8px 18px;
+    padding: 12px 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.remove-button:hover {
+    background-color: rgb(245, 202, 210);
+}
+
+.addBookButton {
+    display: block;
+    font-size: 25px;
+    margin: 32px auto;
+}
+
+.addBookButton:hover {
+    background-color: rgb(197, 226, 197);
 }
 
 /* Cards */
 
+#card-holder {
+    display: grid;
+    justify-content: start;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 36px;
+
+}
+
 .card {
-    border: 1px solid gray;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 16px 20px;
-    margin: 28px;
-    width: 350px;
-    box-shadow: 2px 4px 5px #bbb;
+    /* height: 300px; */
+    background-color: white;
+    box-shadow: 1px 1px 5px #bbb;
     border-radius: 6px;
 }
 
 .card h1 {
-    font-size: 28px;
-    margin-bottom: 12px;
+    font-size: 22px;
+    margin: 12px 0;
 }
 
 .card p {
@@ -34,16 +100,35 @@ button {
 /* Form */
 
 .creation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    background-color: white;
+    width: 300px;
+    background-color: var(--bgColor);
 
-    padding: 30px;
+    padding: 0 20px;
+    padding-bottom: 18px;
     border: 1px solid gray;
     border-radius: 6px;
+}
+
+.creation-form h1 {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 26px;
+}
+
+input {
+    font-size: 14px;
+    border: none;
+    font-weight: bold;
+    padding: 10px 6px;
+    border-radius: 4px;
 }
 
 .invisible {
@@ -52,6 +137,7 @@ button {
 
 .overlay {
     position: fixed;
+    top: 0;
     background-color: rgba(0, 0, 0, 40%);
     height: 100vh;
     width: 100vw;
